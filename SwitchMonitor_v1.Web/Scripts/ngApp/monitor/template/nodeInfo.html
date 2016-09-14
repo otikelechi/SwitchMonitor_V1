@@ -1,0 +1,21 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
+        <h4 class="widget-title">Node Information</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+
+            <label > Node Name: {{component.Name}}</label><br/>
+            <label >Node Connection Status is {{component.IsConnected}}</label><br />
+            <label ng-if="!component.IsConnected">Has been down since {{component.TimeRecorded| date:'MM/dd/yyyy @ h:mma'}}</label><br />
+            <label ng-if="component.OnIPNX"> Connected to: IPNX</label>
+            <label ng-if="!component.OnIPNX">Connected to: Central Switch</label><br/>
+            <label > ConnectionType: {{component.ConnectionType}}</label><br/>
+            <label > IP Address: {{component.IPAddress}} on Port {{component.Port}}</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="$dismiss()">OK</button>
+    </div>
+</div>

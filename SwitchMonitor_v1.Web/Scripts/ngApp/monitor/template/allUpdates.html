@@ -1,0 +1,19 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
+        <h4 class="widget-title">Most Recent Updates</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row pre-scrollable">
+            <div class="form-horizontal" ng-repeat="comp in component">
+
+                <h5>{{comp.Name}} <span ng-if="!comp.IsConnected"><strong>was down at</strong> </span> <span ng-if="comp.IsConnected"><strong>came up at</strong> </span>: {{comp.TimeRecorded| date:'MM/dd/yyyy @ h:mma'}} </h5>
+
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="$dismiss()">OK</button>
+    </div>
+</div>

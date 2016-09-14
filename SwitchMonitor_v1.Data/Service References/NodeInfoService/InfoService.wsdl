@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InfoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/ServiceMonitor.Core" />
+      <xs:element name="GetAllNodes">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllNodesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" minOccurs="0" name="GetAllNodesResult" nillable="true" type="q1:ArrayOfNode" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetActiveNodes">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetActiveNodesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" minOccurs="0" name="GetActiveNodesResult" nillable="true" type="q2:ArrayOfNode" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetConnectedNodes">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetConnectedNodesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" minOccurs="0" name="GetConnectedNodesResult" nillable="true" type="q3:ArrayOfNode" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReSync">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReSyncResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllServices">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllServicesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServiceMonitor.Core" minOccurs="0" name="GetAllServicesResult" nillable="true" type="q4:ArrayOfServiceToMonitor" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceUptimeReport">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="theDate" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceUptimeReportResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" minOccurs="0" name="GetServiceUptimeReportResult" nillable="true" type="q5:ServiceUptimeSummary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceUptimeSummary">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="dateFrom" nillable="true" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="dateTo" nillable="true" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="theServiceCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="theInstitutionCode" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceUptimeSummaryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" minOccurs="0" name="GetServiceUptimeSummaryResult" nillable="true" type="q6:ArrayOfServiceUptimeSummaryEntry" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AppZoneSwitch.Core.Implementations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfNode">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Node" nillable="true" type="tns:Node" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfNode" nillable="true" type="tns:ArrayOfNode" />
+      <xs:complexType name="Node">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:EntityWithEnableDisable">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AcquiringInstitutionCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="BankCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ChildNodes" nillable="true" type="tns:ArrayOfNode" />
+              <xs:element minOccurs="0" name="ConnectionType" type="tns:NodeConnectionType" />
+              <xs:element minOccurs="0" name="EnableSelectiveReversal" type="xs:boolean" />
+              <xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="IsConnected" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsServiceCodeAware" type="xs:boolean" />
+              <xs:element minOccurs="0" name="KeyExchangeInterval" type="xs:int" />
+              <xs:element minOccurs="0" name="ManagementUrl" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Port" type="xs:int" />
+              <xs:element minOccurs="0" name="ReconnectInterval" type="xs:int" />
+              <xs:element minOccurs="0" name="RequestTimeout" type="xs:int" />
+              <xs:element minOccurs="0" name="Type" type="tns:NodeType" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Node" nillable="true" type="tns:Node" />
+      <xs:complexType name="EntityWithEnableDisable">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Entity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="EntityWithEnableDisable" nillable="true" type="tns:EntityWithEnableDisable" />
+      <xs:complexType name="Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Entity" nillable="true" type="tns:Entity" />
+      <xs:simpleType name="NodeConnectionType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Client" />
+          <xs:enumeration value="Server" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="NodeConnectionType" nillable="true" type="tns:NodeConnectionType" />
+      <xs:simpleType name="NodeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Source" />
+          <xs:enumeration value="Destination" />
+          <xs:enumeration value="SourceAndDestination" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="NodeType" nillable="true" type="tns:NodeType" />
+      <xs:complexType name="ServiceUptimeSummary">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Entity">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ServiceUptimeSummary" nillable="true" type="tns:ServiceUptimeSummary" />
+      <xs:complexType name="ArrayOfServiceUptimeSummaryEntry">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceUptimeSummaryEntry" nillable="true" type="tns:ServiceUptimeSummaryEntry" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfServiceUptimeSummaryEntry" nillable="true" type="tns:ArrayOfServiceUptimeSummaryEntry" />
+      <xs:complexType name="ServiceUptimeSummaryEntry">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:Entity">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="FailedTransactions" type="xs:int" />
+              <xs:element minOccurs="0" name="Institution" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="InstitutionCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="IsLocal" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ServiceCategory" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ServiceCategoryCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="SuccessfulTransactions" type="xs:int" />
+              <xs:element minOccurs="0" name="TheServiceUptimeSummary" nillable="true" type="xs:anyType" />
+              <xs:element minOccurs="0" name="TotalTransactions" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ServiceUptimeSummaryEntry" nillable="true" type="tns:ServiceUptimeSummaryEntry" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiceMonitor.Core" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiceMonitor.Core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System.ServiceProcess" />
+      <xs:complexType name="ArrayOfServiceToMonitor">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceToMonitor" nillable="true" type="tns:ServiceToMonitor" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfServiceToMonitor" nillable="true" type="tns:ArrayOfServiceToMonitor" />
+      <xs:complexType name="ServiceToMonitor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceProcess" minOccurs="0" name="Status" nillable="true" type="q1:ServiceControllerStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ServiceToMonitor" nillable="true" type="tns:ServiceToMonitor" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.ServiceProcess" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.ServiceProcess" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:simpleType name="ServiceControllerStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ContinuePending">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Paused">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PausePending">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Running">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="StartPending">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Stopped">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="StopPending">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ServiceControllerStatus" nillable="true" type="tns:ServiceControllerStatus" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IInfoService_GetAllNodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllNodes" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetAllNodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllNodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetActiveNodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveNodes" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetActiveNodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveNodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetConnectedNodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedNodes" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetConnectedNodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedNodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_ReSync_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReSync" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_ReSync_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReSyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetAllServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllServices" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetAllServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetServiceUptimeReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceUptimeReport" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetServiceUptimeReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceUptimeReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetServiceUptimeSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceUptimeSummary" />
+  </wsdl:message>
+  <wsdl:message name="IInfoService_GetServiceUptimeSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceUptimeSummaryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IInfoService">
+    <wsdl:operation name="GetAllNodes">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/GetAllNodes" message="tns:IInfoService_GetAllNodes_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/GetAllNodesResponse" message="tns:IInfoService_GetAllNodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveNodes">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/GetActiveNodes" message="tns:IInfoService_GetActiveNodes_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/GetActiveNodesResponse" message="tns:IInfoService_GetActiveNodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedNodes">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/GetConnectedNodes" message="tns:IInfoService_GetConnectedNodes_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/GetConnectedNodesResponse" message="tns:IInfoService_GetConnectedNodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReSync">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/ReSync" message="tns:IInfoService_ReSync_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/ReSyncResponse" message="tns:IInfoService_ReSync_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServices">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/GetAllServices" message="tns:IInfoService_GetAllServices_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/GetAllServicesResponse" message="tns:IInfoService_GetAllServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceUptimeReport">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/GetServiceUptimeReport" message="tns:IInfoService_GetServiceUptimeReport_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/GetServiceUptimeReportResponse" message="tns:IInfoService_GetServiceUptimeReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceUptimeSummary">
+      <wsdl:input wsam:Action="http://tempuri.org/IInfoService/GetServiceUptimeSummary" message="tns:IInfoService_GetServiceUptimeSummary_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IInfoService/GetServiceUptimeSummaryResponse" message="tns:IInfoService_GetServiceUptimeSummary_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IInfoService" type="tns:IInfoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNodes">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/GetAllNodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveNodes">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/GetActiveNodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedNodes">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/GetConnectedNodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReSync">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/ReSync" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServices">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/GetAllServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceUptimeReport">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/GetServiceUptimeReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceUptimeSummary">
+      <soap:operation soapAction="http://tempuri.org/IInfoService/GetServiceUptimeSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InfoService">
+    <wsdl:port name="BasicHttpBinding_IInfoService" binding="tns:BasicHttpBinding_IInfoService">
+      <soap:address location="http://10.140.111.6:8008/infoservice" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

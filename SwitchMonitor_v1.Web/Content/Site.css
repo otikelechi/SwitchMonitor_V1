@@ -1,7 +1,7 @@
 ﻿@-webkit-keyframes glow {
     50% { box-shadow: 0 0 20px #FF0000; }
 }
-
+ 
 @keyframes glow {
     50% { box-shadow: 0 0 20px #f62f3d; }
 }

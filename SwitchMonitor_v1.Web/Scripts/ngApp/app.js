@@ -1,5 +1,5 @@
-﻿(function () {
-    'use strict';
-    angular.module('App', ['ui.bootstrap']);
-    
+﻿(function() {
+    "use strict";
+    angular.module("App", ["ui.bootstrap"]);
+
 })();

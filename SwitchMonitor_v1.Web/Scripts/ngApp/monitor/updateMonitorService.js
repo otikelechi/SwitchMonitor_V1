@@ -1,11 +1,11 @@
-﻿(function () {
-    'use strict';
+﻿(function() {
+    "use strict";
 
     angular
-        .module('app')
-        .factory('updateMonitorService', updateMonitorService);
+        .module("app")
+        .factory("updateMonitorService", updateMonitorService);
 
-    updateMonitorService.$inject = ['$http'];
+    updateMonitorService.$inject = ["$http"];
 
     function updateMonitorService($http) {
         var service = {
@@ -14,6 +14,6 @@
 
         return service;
 
-        function getData() { }
+        function getData() {}
     }
 })();

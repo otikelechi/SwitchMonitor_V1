@@ -1,32 +1,33 @@
-﻿(function () {
+﻿(function() {
 
-    console.log("hello info");
-    angular.module('App').factory('nodeInformation', nodeInformation);
-   
+        console.log("hello info");
+        angular.module("App").factory("nodeInformation", nodeInformation);
 
-    function nodeInformation($modal) {
-            var openModal = function (component) {
+
+        function nodeInformation($modal) {
+            var openModal = function(component) {
                 var options = {
-                    templateUrl: '/Scripts/ngApp/monitor/template/nodeInfo.html',
-                    windowClass: 'modal fade',
+                    templateUrl: "/Scripts/ngApp/monitor/template/nodeInfo.html",
+                    windowClass: "modal fade",
                     backdrop: true,
                     resolve: {
-                        component: function () {
+                        component: function() {
                             return component;
                         }
                     },
-                    controller: function ($scope, component) {
+                    controller: function($scope, component) {
                         $scope.component = component;
                     }
                 };
                 $modal.open(options);
             };
-        
+
             return {
                 show: openModal
             };
+        }
+
+        console.log("in factory");
+        // function getData() { }
     }
-    console.log('in factory');
-    // function getData() { }
-}
 )();

@@ -6,21 +6,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Head -->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Switch Monitor</title>
 
-    <meta name="description" content="Chartjs Charts" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Chartjs Charts"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
 
     <!--Basic Styles-->
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/beyond.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-edited.min.css" rel="stylesheet" />
-    <link href="~/Content/demo.min.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet"/>
+    <link href="~/Content/beyond.min.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap-edited.min.css" rel="stylesheet"/>
+    <link href="~/Content/demo.min.css" rel="stylesheet"/>
+    <link href="~/Content/Site.css" rel="stylesheet"/>
     <!--Fonts-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
 
@@ -30,37 +30,37 @@
 <!-- /Head -->
 <!-- Body -->
 <body ng-app="App" ng-controller="monitorController" ng-cloak>
-    <!-- Loading Container -->
-    <div class="loading-container">
-        <div class="loader"></div>
-    </div>
-    <!--  /Loading Container -->
-    <!-- Navbar -->
-    <div class=" text-center navbar">
-        <div class=" text-center navbar-inner">
-            <div class="text-center navbar-container">
-                <!-- Navbar Barnd -->
-                
-                <div class="text-center ">
-                        <div class="text-center" ng-class="IsServerConnected?'connected':'failureRed'" style="font-size:30px; padding: 2px; font-weight: bolder; color: white;" ng-cloak>
-                             SWITCH UPTIME MONITOR
-                        </div>
+<!-- Loading Container -->
+<div class="loading-container">
+    <div class="loader"></div>
+</div>
+<!-- /Loading Container -->
+<!-- Navbar -->
+<div class=" text-center navbar">
+    <div class=" text-center navbar-inner">
+        <div class="text-center navbar-container">
+            <!-- Navbar Barnd -->
+
+            <div class="text-center ">
+                <div class="text-center" ng-class="IsServerConnected?'connected':'failureRed'" style="color: white; font-size: 30px; font-weight: bolder; padding: 2px;" ng-cloak>
+                    SWITCH UPTIME MONITOR
                 </div>
-                <!-- /Navbar Barnd -->
-                <!-- Account Area and Settings --->
-                <!-- /Account Area and Settings -->
             </div>
+            <!-- /Navbar Barnd -->
+            <!-- Account Area and Settings --->
+            <!-- /Account Area and Settings -->
         </div>
     </div>
-    <!-- /Navbar -->
-    <!-- Main Container -->
+</div>
+<!-- /Navbar -->
+<!-- Main Container -->
 <div class="main-container container-fluid">
 
     <div class="page-header position-relative">
         <div class="header-title">
             <h1>
-                {{date | date:'medium'}} &nbsp; 
-                
+                {{date | date:'medium'}} &nbsp;
+
             </h1>
         </div>
         <!--Header Buttons-->
@@ -110,7 +110,7 @@
                                                             <label style="font-size: 14px;">Up</label>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <label style="font-size: 35px; color: #1ebfae;" ng-cloak>{{upNodes}}</label>
+                                                            <label style="color: #1ebfae; font-size: 35px;" ng-cloak>{{upNodes}}</label>
                                                         </div>
                                                     </div>
 
@@ -120,7 +120,7 @@
                                                             <label style="font-size: 14px;">Down</label>
                                                         </div>
                                                         <div class="col-sm-5">
-                                                            <label style="font-size: 35px; color: #d73d32;" ng-cloak>{{nodes.length - upNodes}}</label>
+                                                            <label style="color: #d73d32; font-size: 35px;" ng-cloak>{{nodes.length - upNodes}}</label>
                                                         </div>
                                                     </div>
 
@@ -139,7 +139,6 @@
                                 </div>
 
 
-
                             </div>
 
                         </div>
@@ -148,13 +147,13 @@
                 </div>
 
                 <div class="col-xs-12 col-md-4 col-lg-4">
-                    <div class="widget" style=" min-height:515px">
+                    <div class="widget" style="min-height: 515px">
                         <div class="widget-header ">
                             <span class="widget-caption">NODES</span>
                             <button id="btnShow" type="button" class="btn btn-primary panel-new" ng-click="changeState(filter)">Show Down only</button>
                             <input type="text" hidden ng-model="filter">
                         </div>
-                        <div class="widget-body container" style="min-height:330px">
+                        <div class="widget-body container" style="min-height: 330px">
                             <node-directive ng-if="filter == 'none'" ng-repeat="node in nodes | orderBy:['IsConnected']" component="node">
                                 <!--| filter:{IsConnected : false}-->
                             </node-directive>
@@ -173,7 +172,7 @@
                                 </div>
                             </div>
 
-                            <div class="widget-body container" style="min-height:120px">
+                            <div class="widget-body container" style="min-height: 120px">
                                 <node-directive ng-repeat="node in notUsed | orderBy:['IsConnected','-TimeRecorded']" component="node">
                                     <!--| filter:{IsConnected : false}-->
                                 </node-directive>
@@ -183,13 +182,13 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3 col-lg-3">
-                    <div class="widget" style="min-height:520px">
+                    <div class="widget" style="min-height: 520px">
                         <div class="widget-header">
                             <span class="widget-caption">Updates</span>
                             <button class="btn btn-info" ng-click="allUpdates(updates)">Detailed Updates</button>
                         </div>
                         <div class="widget-body container" style="min-height: 487px">
-                            <marquee style="color: white; background-color: #d73d32; font-size: 25px; height: 50px" ng-if="message!=null">{{message}}</marquee>
+                            <marquee style="background-color: #d73d32; color: white; font-size: 25px; height: 50px" ng-if="message!=null">{{message}}</marquee>
                             <update-directive ng-repeat="update in updates" component="update"></update-directive>
                         </div>
                     </div>
@@ -200,48 +199,47 @@
         </div>
     </div>
 </div>
-    <!-- /Page Body -->
-    <!-- /Page Content -->
-    <!-- /Page Container -->
-    <!-- Main Container -->
-    <!--Basic Scripts-->
-    <script src="~/Scripts/pouchdb-5.4.4.js"></script>
-    <script src="~/Scripts/jQuery-2.2.0.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Scripts/ui-bootstrap-tpls-0.12.0.js"></script>
-    <script src="~/Scripts/ngApp/app.js"></script>
-    <script src="~/Scripts/ngApp/monitor/monitorService.js"></script>
-    <script src="~/Scripts/ngApp/monitor/chartDirective.js"></script>
-    <script src="~/Scripts/ngApp/monitor/allUpdates.js"></script>
-    <script src="~/Scripts/ngApp/monitor/nodeInformation.js"></script>
-    <script src="~/Scripts/ngApp/monitor/nodeDirective.js"></script>
-    <script src="~/Scripts/ngApp/monitor/updateDirective.js"></script>
-    <script src="~/Scripts/ngApp/monitor/monitorController.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/Chart.js"></script>
-    <script src="~/Scripts/chartjs-init.js"></script>
+<!-- /Page Body -->
+<!-- /Page Content -->
+<!-- /Page Container -->
+<!-- Main Container -->
+<!--Basic Scripts-->
+<script src="~/Scripts/pouchdb-5.4.4.js"></script>
+<script src="~/Scripts/jQuery-2.2.0.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/ui-bootstrap-tpls-0.12.0.js"></script>
+<script src="~/Scripts/ngApp/app.js"></script>
+<script src="~/Scripts/ngApp/monitor/monitorService.js"></script>
+<script src="~/Scripts/ngApp/monitor/chartDirective.js"></script>
+<script src="~/Scripts/ngApp/monitor/allUpdates.js"></script>
+<script src="~/Scripts/ngApp/monitor/nodeInformation.js"></script>
+<script src="~/Scripts/ngApp/monitor/nodeDirective.js"></script>
+<script src="~/Scripts/ngApp/monitor/updateDirective.js"></script>
+<script src="~/Scripts/ngApp/monitor/monitorController.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/Chart.js"></script>
+<script src="~/Scripts/chartjs-init.js"></script>
 
-    <script src="~/Scripts/beyond.min.js"></script>
+<script src="~/Scripts/beyond.min.js"></script>
 
 
-    <script>
-        $(window).bind("load", function () {
+<script>
+    $(window).bind("load", function() {
 
-            /*Sets Themed Colors Based on Themes*/
-            themeprimary = getThemeColorFromCss('themeprimary');
-            themesecondary = getThemeColorFromCss('themesecondary');
-            themethirdcolor = getThemeColorFromCss('themethirdcolor');
-            themefourthcolor = getThemeColorFromCss('themefourthcolor');
-            themefifthcolor = getThemeColorFromCss('themefifthcolor');
+        /*Sets Themed Colors Based on Themes*/
+        themeprimary = getThemeColorFromCss('themeprimary');
+        themesecondary = getThemeColorFromCss('themesecondary');
+        themethirdcolor = getThemeColorFromCss('themethirdcolor');
+        themefourthcolor = getThemeColorFromCss('themefourthcolor');
+        themefifthcolor = getThemeColorFromCss('themefifthcolor');
 
-            InitiateChartJS.init();
-        });
-    </script>
+        InitiateChartJS.init();
+    });
+</script>
 
 
 </body>
-<!--  /Body -->
+<!-- /Body -->
 </html>
-

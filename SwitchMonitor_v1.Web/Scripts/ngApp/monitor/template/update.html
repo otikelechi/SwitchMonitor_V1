@@ -1,22 +1,22 @@
 ﻿<div class="col-xs-6 col-md-12 col-lg-12">
     <div class="rectangle" ng-class="component.IsConnected?'connected':'failureRed'" ng-click="showDetail()">
-        <div style="font-size: 12px"><p>
-    {{component.Name | uppercase}}
-    <span ng-if="!component.IsConnected">down @ </span>
-    <span ng-if="component.IsConnected">
+        <div style="font-size: 12px">
+            <p>
+                {{component.Name | uppercase}}
+                <span ng-if="!component.IsConnected">down @ </span>
+                <span ng-if="component.IsConnected">
         came up @
     </span>{{component.TimeRecorded | date:'shortTime'}}
-</p></div>
+            </p>
+        </div>
         <div class="row no-padding">
 
             <table class="col-sm-12 col-lg-12 ">
                 <tr>
-                    <td height="26px" style="color:white; overflow:inherit; font-size:9px" title="{{component.Name}}"></td>
+                    <td height="26px" style="color: white; font-size: 9px; overflow: inherit;" title="{{component.Name}}"></td>
                 </tr>
             </table>
 
         </div>
     </div>
 </div>
-
-

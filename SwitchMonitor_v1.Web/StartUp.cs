@@ -1,14 +1,11 @@
-﻿using Microsoft.Owin;
-using Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Microsoft.Owin.Cors;
+using Owin;
+using SwitchMonitor_v1.Web;
 
-[assembly: OwinStartup(typeof(SwitchMonitor_v1.Web.StartUp))]
+[assembly: OwinStartup(typeof (StartUp))]
+
 namespace SwitchMonitor_v1.Web
 {
     public class StartUp

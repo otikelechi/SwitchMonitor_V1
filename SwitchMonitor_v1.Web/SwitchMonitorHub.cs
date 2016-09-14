@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.SignalR;
-using SwitchMonitor_v1.Model;
-using SwitchMonitor_v1.Data;
+﻿using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
+using SwitchMonitor_v1.Data;
 
 namespace SwitchMonitor_v1.Web
 {
     public class SwitchMonitorHub : Hub
-    {        
+    {
         public void GetAllNodes()
         {
-            Tuple<List<Node>, List<Node>, string> returnedObject = NodeData.getAllNodes();
-            string statusMesssage = returnedObject.Item3;
-            List<Node> allUsedNodes = returnedObject.Item1;
-            string notUsed = JsonConvert.SerializeObject(returnedObject.Item2);
-            string nodes = JsonConvert.SerializeObject(allUsedNodes);
-            object recentUpdates = NodeData.GetRecentUpdates();
-            string updates = JsonConvert.SerializeObject(recentUpdates);
-            Clients.All.getAllNodes(nodes,updates,notUsed,statusMesssage);
-
+            var returnedObject = NodeData.getAllNodes();
+            var statusMesssage = returnedObject.Item3;
+            var allUsedNodes = returnedObject.Item1;
+            var notUsed = JsonConvert.SerializeObject(returnedObject.Item2);
+            var nodes = JsonConvert.SerializeObject(allUsedNodes);
+            var recentUpdates = NodeData.GetRecentUpdates();
+            var updates = JsonConvert.SerializeObject(recentUpdates);
+            Clients.All.getAllNodes(nodes, updates, notUsed, statusMesssage);
         }
-
-        
     }
 }

@@ -7,8 +7,8 @@
         <div class="row">
 
             <label > Node Name: {{component.Name}}</label><br/>
-            <label >Node Connection Status is {{component.IsConnected}}</label><br />
-            <label ng-if="!component.IsConnected">Has been down since {{component.TimeRecorded| date:'MM/dd/yyyy @ h:mma'}}</label><br />
+            <label >Node Connection Status is {{component.IsConnected}}</label><br/>
+            <label ng-if="!component.IsConnected">Has been down since {{component.TimeRecorded| date:'MM/dd/yyyy @ h:mma'}}</label><br/>
             <label ng-if="component.OnIPNX"> Connected to: IPNX</label>
             <label ng-if="!component.OnIPNX">Connected to: Central Switch</label><br/>
             <label > ConnectionType: {{component.ConnectionType}}</label><br/>

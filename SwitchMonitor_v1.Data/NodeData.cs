@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using SwitchMonitor_v1.Data.NodeInfoService;
@@ -70,15 +71,20 @@ namespace SwitchMonitor_v1.Data
                 }
                 catch (FaultException ex)
                 {
+                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                                   ex.InnerException+"\n");
                     return null;
                 }
                 catch (CommunicationException ex)
                 {
-
+                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + "due to " + ex.Message + "with an inner exception :" +
+                                   ex.InnerException + "\n");
                     return null;
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + "due to " + ex.Message + "with an inner exception :" +
+                                  ex.InnerException + "\n");
                     return GetNodesConnectedToCentral();
                 }
             }
@@ -128,15 +134,21 @@ namespace SwitchMonitor_v1.Data
                 }
                 catch (FaultException ex)
                 {
+                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                                  ex.InnerException + "\n");
                     return GetNodesConnectedToIPNX();
                 }
                 catch (CommunicationException ex)
                 {
+                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                                  ex.InnerException + "\n");
                     return null;
                 }
 
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                                  ex.InnerException + "\n");
                     //Console.Write(ex.Message + " on IPNX");
                     //Console.ReadKey();
                     return GetNodesConnectedToIPNX();

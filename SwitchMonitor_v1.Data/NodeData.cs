@@ -30,16 +30,28 @@ namespace SwitchMonitor_v1.Data
         {
             using (var info = new InfoServiceClient())
             {
-                var result = new List<NodeResult>(100);
+                List<NodeResult> result = new List<NodeResult>(200);
                 NodeInfoService.Node[] activeNodes = null;
                 try
                 {
-                    var uptimeReport = info.GetServiceUptimeReport(DateTime.Now);
+                    //var uptimeReport = info.GetServiceUptimeReport(DateTime.Now);
+                    //uptimeReport = info.GetServiceUptimeReport(new DateTime(2016, 09, 01));
+                    
+                    
                     activeNodes = info.GetAllNodes();
+                    
                     activeNodes = activeNodes.Where(x => x.IsActive).ToArray();
                     for (var i = 0; i <= activeNodes.Length - 1; i++)
                     {
-                        var add = new NodeResult
+                        if (activeNodes[i].ChildNodes!= null && !activeNodes[i].Name.Contains("IPNX"))
+                        {
+                            var nodeChildren = activeNodes[i].ChildNodes;
+                            result.AddRange(nodeChildren.Select(node => new NodeResult
+                            {
+                                Name  = activeNodes[i].Name + " " + node.Name, IsConnected = node.IsConnected,Port = node.Port, ConnectionType = node.ConnectionType.ToString(), IPAddress = node.HostName, OnIPNX = false
+                            }));
+                        }
+                        NodeResult add = new NodeResult
                         {
                             Name = activeNodes[i].Name,
                             IsConnected = activeNodes[i].IsConnected,
@@ -62,6 +74,7 @@ namespace SwitchMonitor_v1.Data
                 }
                 catch (CommunicationException ex)
                 {
+
                     return null;
                 }
                 catch (Exception ex)
@@ -83,6 +96,19 @@ namespace SwitchMonitor_v1.Data
                     activeNodes = activeNodes.Where(x => x.IsActive).ToArray();
                     for (var i = 0; i <= activeNodes.Length - 1; i++)
                     {
+                        if (activeNodes[i].ChildNodes != null)
+                        {
+                            var nodeChildren = activeNodes[i].ChildNodes;
+                            result.AddRange(nodeChildren.Select(node => new NodeResult
+                            {
+                                Name = activeNodes[i].Name + " "+node.Name,
+                                IsConnected = node.IsConnected,
+                                Port = node.Port,
+                                ConnectionType = node.ConnectionType.ToString(),
+                                IPAddress = node.HostName,
+                                OnIPNX = false
+                            }));
+                        }
                         var add = new NodeResult
                         {
                             Name = activeNodes[i].Name,
@@ -195,7 +221,7 @@ namespace SwitchMonitor_v1.Data
                 }
                 if (exsit)
                 {
-                    var node = dbNodes.Nodes.Single(x => x.Name == n.Name);
+                    var node = dbNodes.Nodes.First(x => x.Name == n.Name);
                     if (node.IsConnected != n.IsConnected)
                     {
                         node.IsConnected = n.IsConnected;

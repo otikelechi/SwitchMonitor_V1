@@ -4,7 +4,7 @@
         var directive = {
             restrict: "EA",
             replace: true,
-            templateUrl: "/Scripts/ngApp/monitor/template/node.html",
+            templateUrl: "Scripts/ngApp/monitor/template/node.html",
             scope: {
                 component: "="
             },

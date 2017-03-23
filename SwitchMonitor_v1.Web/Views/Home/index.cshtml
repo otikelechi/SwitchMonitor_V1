@@ -154,7 +154,7 @@
                             <input type="text" hidden ng-model="filter">
                         </div>
                         <div class="widget-body container" style="min-height: 330px">
-                            <node-directive ng-if="filter == 'none'" ng-repeat="node in nodes | orderBy:['IsConnected']" component="node">
+                            <node-directive ng-if="filter == 'none'" ng-repeat="node in nodes | orderBy:['IsConnected','-TimeRecorded']" component="node">
                                 <!--| filter:{IsConnected : false}-->
                             </node-directive>
                             <node-directive ng-if="filter == 'down'" ng-repeat="node in nodes |filter: {IsConnected : false} | orderBy:['-TimeRecorded']" component="node">

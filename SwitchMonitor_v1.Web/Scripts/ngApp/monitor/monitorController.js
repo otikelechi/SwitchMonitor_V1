@@ -30,16 +30,22 @@
                 $scope.$apply();
             }
             console.log("all updates received");
-            $scope.notUsed = notUsed;
+            if (nodes != null || nodes) {
+                $scope.notUsed = notUsed;
+            }
             //JSON.parse(nodes);
             console.log(updates + " occured @ " + new Date());
             var upCount = 0;
-            for (var i = 0; i <= nodes.length - 1; i++) {
+          
+                for (var i = 0; i <= nodes.length - 1; i++) {
 
-                if (nodes[i].IsConnected) {
-                    upCount++;
+                    if (nodes[i].IsConnected) {
+                        upCount++;
+                    }
                 }
-            }
+           // }
+            
+
             $scope.upNodes = upCount;
 
             $scope.$apply();

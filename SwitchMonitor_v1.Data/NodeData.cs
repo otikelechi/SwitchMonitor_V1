@@ -134,20 +134,20 @@ namespace SwitchMonitor_v1.Data
                 }
                 catch (FaultException ex)
                 {
-                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                    Trace.WriteLine("an Error While trying to get IPNX Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
                                   ex.InnerException + "\n");
                     return GetNodesConnectedToIPNX();
                 }
                 catch (CommunicationException ex)
                 {
-                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                    Trace.WriteLine("an Error While trying to get IPNX Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
                                   ex.InnerException + "\n");
                     return null;
                 }
 
                 catch (Exception ex)
                 {
-                    Trace.WriteLine("an Error While trying to get GoGrid Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
+                    Trace.WriteLine("an Error While trying to get IPNX Nodes Occured at " + DateTime.Now + " due to at " + ex.Message + "with an inner exception :" +
                                   ex.InnerException + "\n");
                     //Console.Write(ex.Message + " on IPNX");
                     //Console.ReadKey();
